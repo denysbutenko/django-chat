@@ -1,0 +1,6 @@
+-r base.txt
+
+coverage==3.6
+django-discover-runner==0.4
+django-debug-toolbar==0.11.0
+Sphinx==1.2b1
