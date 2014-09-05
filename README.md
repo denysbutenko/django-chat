@@ -44,7 +44,7 @@ To create a project using this template, open a terminal and navigate to the pla
 
 Assuming you are still in the context of the django17 virtual environment, let's clone the project into a directory called **projectName**:
 
-    (django17)$ git clone https://github.com/dereknutile/django-1.6-template.git projectName
+    (django17)$ git clone https://github.com/dereknutile/django-1.7-template.git projectName
 
 ### [Install Dependencies](id:anchor-install-dependencies)
 
@@ -69,7 +69,7 @@ First, initialize the SQLITE database.  *Note: you may be asked to define the su
 
 Run the server ...
 
-    (django17)$ python project/manage.py runserver    
+    (django17)$ python project/manage.py runserver
 
 Test it out: [http://127.0.0.1:8000](127.0.0.1:8000).
 
