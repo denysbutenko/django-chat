@@ -1,4 +1,10 @@
 /*! project specific CSS goes here. */
-body {
-  padding-top: 50px; /* 60px to make the container go all the way to the bottom of the topbar */
+.navbar {
+  margin-bottom: 0;
+}
+.sidebar {
+  background-color: #f8f8f8;
+  border-right: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 20px;
 }
