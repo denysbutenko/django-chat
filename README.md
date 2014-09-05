@@ -65,11 +65,17 @@ To install requirements on your development system, use PIP to reference the dev
 
 First, initialize the SQLITE database.  *Note: you may be asked to define the superuser/admin*.
 
-    (django17)$ python project/manage.py syncdb
+    (django17)$ make syncdb
 
 Run the server ...
 
-    (django17)$ python project/manage.py runserver
+    (django17)$ make run
+
+Test it out: [http://127.0.0.1:8000](127.0.0.1:8000).
+
+Run the socket.io server ...
+
+    (django17)$ make fun
 
 Test it out: [http://127.0.0.1:8000](127.0.0.1:8000).
 

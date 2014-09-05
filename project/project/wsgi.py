@@ -18,7 +18,8 @@ from os.path import abspath, dirname
 from sys import path
 
 SITE_ROOT = dirname(dirname(abspath(__file__)))
-path.append(SITE_ROOT)
+if SITE_ROOT not in path:
+    path.insert(0, SITE_ROOT)
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks
 # if running multiple sites in the same mod_wsgi process. To fix this, use

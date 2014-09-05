@@ -1,9 +1,8 @@
 """Development settings and globals."""
-
-
+from __future__ import unicode_literals, absolute_import
 from os.path import join, normpath
 
-from base import *
+from project.settings.base import *
 
 
 # DEBUG CONFIGURATION
@@ -66,3 +65,35 @@ DEBUG_TOOLBAR_CONFIG = {
     'SHOW_TEMPLATE_CONTEXT': True,
 }
 # END TOOLBAR CONFIGURATION
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'socketio': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+    },
+}

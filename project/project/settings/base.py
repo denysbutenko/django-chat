@@ -17,7 +17,8 @@ SITE_NAME = basename(DJANGO_ROOT)
 
 # Add our project to our pythonpath, this way we don't need to type our project
 # name in our dotted import paths:
-path.append(DJANGO_ROOT)
+if DJANGO_ROOT not in path:
+    path.insert(0, DJANGO_ROOT)
 # END PATH CONFIGURATION
 
 
@@ -198,6 +199,7 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'apps.chat',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
