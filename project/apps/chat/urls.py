@@ -5,6 +5,7 @@ from socketio import sdjango
 sdjango.autodiscover()
 
 urlpatterns = patterns(
-    "chat.views",
+    "apps.chat.views",
+    url(r'^$', "index"),
     url("^socket\.io", include(sdjango.urls)),
 )
