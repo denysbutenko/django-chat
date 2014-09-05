@@ -1,0 +1,27 @@
+<div id="createChannelModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Create a channel</h4>
+      </div>
+      <div class="modal-body">
+        <form id="createChannelForm" class="form-horizontal" method="post" action="">
+          <div class="form-group">
+            <label for="name" class="col-lg-2 control-label">Name</label>
+            <div class="col-lg-10">
+              <input class="form-control" type="text" id="name" name="name" autocomplete="off">
+              <p class="help-block">
+                Names can not be empty.
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="createChannelSubmit">Create Channel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -5,3 +5,7 @@
 {% block content %}
     <h1>Welcome to Django Chat</h1>
 {% endblock content %}
+
+{% block extra_templates %}
+    {% include 'chat/partials/create_channel_modal_window.html' %}
+{% endblock extra_templates %}
