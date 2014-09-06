@@ -83,15 +83,27 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         },
+        'chat': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': normpath(join(DJANGO_ROOT, 'logs', 'chat.log'))
+        },
+        'request_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': normpath(join(DJANGO_ROOT, 'logs', 'debug.log')),
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'backupCount': 5,
+        },
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
-            'propagate': True,
+            'handlers': ['console', 'request_handler'],
+            'propagate': False,
             'level': 'INFO',
         },
         'socketio': {
-            'handlers': ['console'],
+            'handlers': ['console', 'chat'],
             'propagate': True,
             'level': 'INFO',
         },

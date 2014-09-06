@@ -4,6 +4,7 @@ import logging
 from socketio.namespace import BaseNamespace
 from socketio.mixins import RoomsMixin, BroadcastMixin
 from socketio.sdjango import namespace
+import datetime
 
 
 @namespace('/chat')
@@ -15,7 +16,7 @@ class ChatNamespace(BaseNamespace, RoomsMixin, BroadcastMixin):
         self.log("Socketio session started")
 
     def log(self, message):
-        self.logger.info("[{0}] {1}".format(self.socket.sessid, message))
+        self.logger.info("[{0}] {1}".format(datetime.datetime.now(), message))
 
     def on_join(self, channel):
         self.channel = channel
@@ -33,8 +34,8 @@ class ChatNamespace(BaseNamespace, RoomsMixin, BroadcastMixin):
 
     def recv_disconnect(self):
         # Remove nickname from the list.
-        self.log('Disconnected')
         nickname = self.socket.session['nickname']
+        self.log('Disconnected: {0}'.format(nickname))
         self.nicknames.remove(nickname)
         self.broadcast_event('announcement', '%s has disconnected' % nickname)
         self.broadcast_event('nicknames', self.nicknames)
@@ -42,7 +43,8 @@ class ChatNamespace(BaseNamespace, RoomsMixin, BroadcastMixin):
         return True
 
     def on_user_message(self, msg):
-        self.log('User message: {0}'.format(msg))
+        nickname = self.socket.session['nickname']
+        self.log('{0} said: {1}'.format(nickname, msg))
         self.emit_to_room(self.channel, 'msg_to_room',
-                          self.socket.session['nickname'], msg)
+                          nickname, msg)
         return True
