@@ -12,13 +12,20 @@
 {% endblock extra_js %}
 
 {% block content %}
-  <h3># {{ channel.name }}</h3>
-  <div id="chat">
-    <div id="connecting">
-      <div class="wrap">Connecting to socket.io server</div>
+  <div class="row">
+    <div class="col-lg-10">
+      <h3 class="channel-name"># {{ channel.name }}</h3>
+      <div id="chat">
+        <div id="connecting">
+          <div class="wrap">Connecting to socket.io server</div>
+        </div>
+        <div id="messages">
+          <div id="lines"></div>
+        </div>
+      </div>
     </div>
-    <div id="messages">
-      <div id="lines"></div>
+    <div class="col-lg-2">
+      <ul id="users-list"></ul>
     </div>
   </div>
   {% if user.is_authenticated %}

@@ -21,3 +21,9 @@
     right: 1rem;
     height: 4rem;
 }
+#users-list {
+    padding-left: 0;
+}
+.channel-name {
+    margin-top: 0;
+}
