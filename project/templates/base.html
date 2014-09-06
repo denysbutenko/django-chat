@@ -65,7 +65,10 @@
         </div>
       </div>
       <div class="col-lg-10 col-lg-offset-2">
-        <div class="content">{% block content %}{% endblock %}</div>
+        <div class="content">
+        {% include 'partials/messages.html' %}
+        {% block content %}{% endblock %}
+        </div>
       </div>
     </div>
   </div> <!-- .container-fluid.page -->
