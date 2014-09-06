@@ -48,13 +48,17 @@
         <div class="sidebar-inner">
           <h5>Channels</h5>
           <ul class="list-unstyled">
-            <li><a href="#"># main</a></li>
+            {% if channels %}
+              {% for channel in channels %}
+                <li><a href="{{ channel.get_absolute_url }}"># {{ channel.name }}</a></li>
+              {% endfor %}
+            {% endif %}
             <li><hr><a href="#" data-toggle="modal" data-target="#createChannelModal">Create a channel…</a></li>
           </ul>
         </div>
       </div>
       <div class="col-lg-10 col-lg-offset-2">
-        {% block content %}{% endblock %}
+        <div class="content">{% block content %}{% endblock %}</div>
       </div>
     </div>
   </div> <!-- .container-fluid.page -->
@@ -66,5 +70,6 @@
   <script src="{% static 'js/project.js' %}"></script>
   {% block extra_js %}{% endblock extra_js %}
   {% block extra_templates %}{% endblock extra_templates %}
+  {% include 'chat/partials/create_channel_modal_window.html' %}
 </body>
 </html>

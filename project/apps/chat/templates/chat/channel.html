@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  {{ channel.name }}
+{% endblock page_title %}
+
+{% block content %}
+  <h3># {{ channel.name }}</h3>
+  <div id="chat">
+    <div id="connecting">
+      <div class="wrap">Connecting to socket.io server</div>
+    </div>
+    <div id="messages">
+      <div id="lines"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <form id="sendMessageForm">
+      <div class="input-group">
+        <input class="form-control" type="text" id="message" name="message" placeholder="Enter message" required>
+        <span class="input-group-btn">
+          <input class="btn btn-default" type="submit" value="Send">
+        </span>
+      </div>
+    </form>
+  </div>
+{% endblock content %}
