@@ -50,7 +50,16 @@ SERVER_EMAIL = EMAIL_HOST_USER
 # END EMAIL CONFIGURATION
 
 # DATABASE CONFIGURATION
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': normpath(join(DJANGO_ROOT, 'default.db')),
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
 # END DATABASE CONFIGURATION
 
 
