@@ -35,8 +35,13 @@
           <li class="active"><a href="/"><i class="fa fa-home"></i> Home</a></li>
         </ul>
         <ul class="nav navbar-nav pull-right">
-          <li><a href="#"><i class="fa fa-sign-in"></i> Sign in</a></li>
-          <li><a href="#"><i class="fa fa-user"></i> Sign up</a></li>
+          {% if not user.is_authenticated %}
+            <li><a href="{% url 'signin' %}"><i class="fa fa-sign-in"></i> Sign in</a></li>
+            <li><a href="{% url 'signup' %}"><i class="fa fa-user"></i> Sign up</a></li>
+          {% else %}
+            <li><a href="#"><i class="fa fa-user"></i> {{ user }}</a></li>
+            <li><a href="{% url 'signout' %}"><i class="fa fa-sign-out"></i> Sign out</a></li>
+          {% endif %}
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -53,7 +58,9 @@
                 <li><a href="{{ channel.get_absolute_url }}"># {{ channel.name }}</a></li>
               {% endfor %}
             {% endif %}
+            {% if user.is_authenticated %}
             <li><hr><a href="#" data-toggle="modal" data-target="#createChannelModal">Create a channel…</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>
