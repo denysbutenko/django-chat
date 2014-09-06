@@ -6,3 +6,5 @@ migrate:
 	venv/bin/python project/manage.py migrate
 makemigrations:
 	venv/bin/python project/manage.py makemigrations
+reqs:
+	venv/bin/pip install -r requirements/development.txt
