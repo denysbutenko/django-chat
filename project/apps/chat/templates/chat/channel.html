@@ -1,8 +1,15 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block page_title %}
   {{ channel.name }}
 {% endblock page_title %}
+
+{% block extra_js %}
+  <script src="{% static 'js/socket.io.min.js' %}"></script>
+  <script>window.channel_id = "{{ channel.id }}";</script>
+  <script src="{% static 'js/chat.js' %}"></script>
+{% endblock extra_js %}
 
 {% block content %}
   <h3># {{ channel.name }}</h3>

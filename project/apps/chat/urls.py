@@ -6,8 +6,9 @@ sdjango.autodiscover()
 
 urlpatterns = patterns(
     "apps.chat.views",
+    url("^socket\.io", include(sdjango.urls)),
+
     url(r'^$', "index"),
     url("^create_channel/$", "create_channel", name="create_channel"),
     url("^(?P<slug>.*)$", "channel", name="channel"),
-    url("^socket\.io", include(sdjango.urls)),
 )
