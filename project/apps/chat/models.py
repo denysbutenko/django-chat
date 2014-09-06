@@ -20,15 +20,3 @@ class Channel(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super(Channel, self).save(*args, **kwargs)
-
-
-class User(models.Model):
-    name = models.CharField(max_length=20)
-    session = models.CharField(max_length=20)
-    channel = models.ForeignKey("chat.Channel", related_name="users")
-
-    class Meta:
-        ordering = ("name",)
-
-    def __unicode__(self):
-        return self.name

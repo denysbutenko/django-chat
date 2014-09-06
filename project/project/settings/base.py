@@ -201,6 +201,7 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'apps.chat',
+    'apps.users',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -247,3 +248,5 @@ WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 # END WSGI CONFIGURATION
 
 TEST_RUNNER = 'discover_runner.DiscoverRunner'
+
+AUTH_USER_MODEL = 'users.User'

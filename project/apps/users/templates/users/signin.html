@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load add_class %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <form class="form" method="POST" action="#" role="form">
+            {% csrf_token %}
+            <legend>Sign In</legend>
+            <fieldset>
+                <div class="form-group">
+                    <label for="id_username">Username</label>
+                    {{ form.username|add_class:"form-control" }}
+                    {% if form.username.errors %}
+                        <div class="form-error">{{ form.username.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_password">Password</label>
+                    {{ form.password|add_class:"form-control" }}
+                    {% if form.password.errors %}
+                        <div class="form-error">{{ form.password.errors }}</div>
+                    {% endif %}
+                </div>
+            </fieldset>
+
+            <button class="btn btn-lg btn-info btn-block btn-submit" type="submit">Sign In</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
