@@ -8,7 +8,7 @@ urlpatterns = patterns(
     "apps.chat.views",
     url("^socket\.io", include(sdjango.urls)),
 
-    url(r'^$', "index"),
-    url("^create_channel/$", "create_channel", name="create_channel"),
-    url("^(?P<slug>.*)$", "channel", name="channel"),
+    url(r'^channels/$', "index"),
+    url(r'^create_channel/$', "create_channel", name="create_channel"),
+    url(r'^channel/(?P<slug>.*)/$', "channel", name="channel"),
 )

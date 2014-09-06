@@ -6,7 +6,7 @@
         <h4 class="modal-title">Create a channel</h4>
       </div>
       <div class="modal-body">
-        <form id="createChannelForm" class="form-horizontal" method="post" action="{% url 'create_channel' %}">
+        <form id="createChannelForm" class="form-horizontal" method="post" action="{% url 'chat:create_channel' %}">
           {% csrf_token %}
           <div class="form-group">
             <label for="name" class="col-lg-2 control-label">Name</label>
