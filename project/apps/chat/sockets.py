@@ -33,7 +33,6 @@ class ChatNamespace(BaseNamespace, RoomsMixin, BroadcastMixin):
         self.socket.session['nickname'] = nickname
         self.broadcast_event('announcement', '%s has connected' % nickname)
         self.broadcast_event('nicknames', self.nicknames)
-        return True, nickname
 
     def recv_disconnect(self):
         # Remove nickname from the list.
@@ -47,7 +46,8 @@ class ChatNamespace(BaseNamespace, RoomsMixin, BroadcastMixin):
 
     def on_user_message(self, msg):
         nickname = self.socket.session['nickname']
-        self.log('{0} said: {1}'.format(nickname, msg))
-        self.emit_to_room(self.channel, 'msg_to_room',
-                          nickname, msg)
+        self.log('DEBUG: {0}'.format(msg['text']))
+        msg['from'] = nickname
+        self.log('{0} said: {1}'.format(msg['from'], msg['text']))
+        self.emit_to_room(self.channel, 'msg_to_room', msg)
         return True

@@ -22,6 +22,16 @@ $(function() {
         }
     });
 
+    function message(message) {
+        $('#lines').append($('<p>').append(
+            $('<span class="text-muted">').text(
+                '[' + message.date + '] '
+            ),
+            $('<b>').text(message.from + ': '),
+            message.text
+        ));
+    }
+
     socket.on('reconnect', function () {
         $('#lines').remove();
         message('System', 'Reconnected to the server');
@@ -37,14 +47,15 @@ $(function() {
 
     socket.on('msg_to_room', message);
 
-    function message(from, msg) {
-        $('#lines').append($('<p>').append($('<b>').text(from + ': '), msg));
-    }
-
     $(function () {
         $('#sendMessageForm').submit(function () {
-            message('me', $('#message').val());
-            socket.emit('user message', $('#message').val());
+            sent_message = {
+                date: moment().format("HH:mm:ss"),
+                from: 'me',
+                text: $('#message').val()
+            }
+            socket.emit('user message', sent_message);
+            message(sent_message);
             clear();
             $('#lines').get(0).scrollTop = 10000000;
             return false;
