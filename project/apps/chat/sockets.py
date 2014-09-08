@@ -16,7 +16,10 @@ class ChatNamespace(BaseNamespace, RoomsMixin, BroadcastMixin):
         self.log("Socketio session started")
 
     def log(self, message):
-        self.logger.info("[{0}] {1}".format(datetime.datetime.now(), message))
+        self.logger.info("[{0}] {1}".format(
+            datetime.datetime.now().strftime("%d.%m.%y %H:%M:%S"),
+            message)
+        )
 
     def on_join(self, channel):
         self.channel = channel
