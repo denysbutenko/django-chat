@@ -4,4 +4,9 @@
 
 {% block content %}
     <h1>Welcome to Django Chat</h1>
+    {% if user.is_authenticated %}
+        <h2 class="text-muted">&larr; select channel or create one</h2>
+    {% else %}
+        <h2>For unlock full features - please, <a href="{% url 'signup' %}">sign up!</a></h2>
+    {% endif %}
 {% endblock content %}
