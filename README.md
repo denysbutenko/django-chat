@@ -1,4 +1,9 @@
-# Django Chat Application
+Django Chat Application
+========
+
+### Screenshot
+![Frontend](docs/preview.png)
+
 
 ### Installation
 
