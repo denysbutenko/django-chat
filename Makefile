@@ -9,4 +9,4 @@ makemigrations:
 reqs:
 	venv/bin/pip install -r requirements/development.txt
 gunicorn:
-	gunicorn --worker-class socketio.sgunicorn.GeventSocketIOWorker project.wsgi:application &
+	cd project && gunicorn --worker-class socketio.sgunicorn.GeventSocketIOWorker project.wsgi:application &
