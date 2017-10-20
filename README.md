@@ -1,4 +1,4 @@
-Django Chat Application
+Simple chat application using Python/Django.
 ========
 
 ### Screenshot
